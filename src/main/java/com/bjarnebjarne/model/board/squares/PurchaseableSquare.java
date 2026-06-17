@@ -1,5 +1,6 @@
 package com.bjarnebjarne.model.board.squares;
 
+import com.bjarnebjarne.model.game.GameState;
 import com.bjarnebjarne.model.player.Player;
 
 public abstract class PurchaseableSquare extends Square {
@@ -17,4 +18,19 @@ public abstract class PurchaseableSquare extends Square {
         this.mortgage = mortgage;
         this.rent = rent;
     }
+
+    @Override
+    public void onLand(GameState state) {
+        if (this.isMortgaged) return;
+        if (this.owner == null) {
+            // offer to buy
+            return;
+        }
+        if (this.owner == state.getCurrentPlayer()) return;
+        int rentToTransfer = calculateRent(state);
+        state.getCurrentPlayer().changeBalance(-rentToTransfer);
+        this.owner.changeBalance(rentToTransfer);
+    }
+
+    public abstract int calculateRent(GameState state);
 }

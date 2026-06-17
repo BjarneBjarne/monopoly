@@ -13,8 +13,8 @@ public class StreetSquare extends PurchaseableSquare {
     }
 
     @Override
-    public void onLand(GameState state) {
-
+    public int calculateRent(GameState state) {
+        return 0;
     }
     
 }

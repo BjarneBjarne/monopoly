@@ -8,11 +8,9 @@ public class RailRoadSquare extends PurchaseableSquare {
         super(type, name, position, price, mortgage, rent);
     }
 
-
-
     @Override
-    public void onLand(GameState state) {
-
+    public int calculateRent(GameState state) {
+        return 0;
     }
     
 }

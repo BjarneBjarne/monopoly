@@ -1,0 +1,22 @@
+# Compiled output
+target/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+*.classpath
+*.project
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Maven wrapper (optional — remove these two lines if you use mvnw)
+.mvn/
+mvnw
+mvnw.cmd
+
+# Logs
+*.log
