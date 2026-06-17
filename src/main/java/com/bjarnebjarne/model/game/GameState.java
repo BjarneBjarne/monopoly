@@ -31,4 +31,8 @@ public class GameState {
     public Player getCurrentPlayer() {
         return players.get(currentPlayerIndex);
     }
+
+    public Board getBoard() {
+        return board;
+    }
 }

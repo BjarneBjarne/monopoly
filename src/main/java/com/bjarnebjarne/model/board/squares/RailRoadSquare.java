@@ -2,15 +2,23 @@ package com.bjarnebjarne.model.board.squares;
 
 import com.bjarnebjarne.model.game.GameState;
 
-public class RailRoadSquare extends PurchaseableSquare {
+public class RailroadSquare extends PurchaseableSquare {
 
-    public RailRoadSquare(String type, String name, int position, int price, int mortgage, int[] rent) {
+    public RailroadSquare(String type, String name, int position, int price, int mortgage, int[] rent) {
         super(type, name, position, price, mortgage, rent);
     }
 
     @Override
     public int calculateRent(GameState state) {
-        return 0;
+        int railroadsOwned = 0;
+        for (Square square : state.getBoard().getSquares()) {
+            if (square instanceof RailroadSquare rr && rr.getOwner() == this.getOwner()) {
+                railroadsOwned++;
+            }
+        }
+        if (railroadsOwned >= 0 && railroadsOwned <= rent.length) {
+            return this.rent[railroadsOwned - 1];
+        }
+        throw new IndexOutOfBoundsException("Railroads owned must be between 0 and " + rent.length);
     }
-    
 }

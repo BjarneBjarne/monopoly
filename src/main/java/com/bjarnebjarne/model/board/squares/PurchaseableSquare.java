@@ -33,4 +33,8 @@ public abstract class PurchaseableSquare extends Square {
     }
 
     public abstract int calculateRent(GameState state);
+
+    public Player getOwner() {
+        return owner;
+    }
 }
