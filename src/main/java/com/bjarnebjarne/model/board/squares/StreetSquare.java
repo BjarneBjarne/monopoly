@@ -16,8 +16,8 @@ public class StreetSquare extends PurchaseableSquare {
 
     @Override
     public int calculateRent(GameState state) {
-        if (state.playerOwnsColorGroup(this.owner, this.colorGroup)) {
-            return this.rent[0] * 2;
+        if (state.playerOwnsColorGroup(this.owner, this.colorGroup) && numHouses == 0) {
+            return this.rent[numHouses] * 2;
         }
         return this.rent[numHouses];
     }

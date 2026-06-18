@@ -3,6 +3,7 @@ package com.bjarnebjarne.model.game;
 import java.util.List;
 
 import com.bjarnebjarne.model.board.Board;
+import com.bjarnebjarne.model.board.squares.PurchaseableSquare;
 import com.bjarnebjarne.model.board.squares.Square;
 import com.bjarnebjarne.model.board.squares.StreetSquare;
 import com.bjarnebjarne.model.card.ChanceCard;
@@ -47,6 +48,24 @@ public class GameState {
         }
 
         return groupCount > 0 && ownedCount == groupCount;
+    }
+
+    public int numberPlayerOwns(Square referenceSquare) {
+        int numberOwned = 0;
+        Player referenceOwner = null;
+        if (referenceSquare instanceof PurchaseableSquare ps) {
+            referenceOwner = ps.getOwner();
+        }
+
+        for (Square square : this.board.getSquares()) {
+            if (square.getType().equals(referenceSquare.getType()) &&
+                square instanceof PurchaseableSquare ps &&
+                ps.getOwner() == referenceOwner) {
+                numberOwned++;
+            }
+        }
+
+        return numberOwned;
     }
 
     public Player getCurrentPlayer() {

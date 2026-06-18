@@ -10,7 +10,13 @@ public class UtilitySquare extends PurchaseableSquare {
 
     @Override
     public int calculateRent(GameState state) {
-        return 0;
+        int utilitiesOwned = state.numberPlayerOwns(this);
+        int rollTotal = state.getLastRoll().total();
+
+        if (utilitiesOwned >= 1 && utilitiesOwned <= rent.length) {
+            return this.rent[utilitiesOwned - 1] * rollTotal;
+        }
+        throw new IndexOutOfBoundsException("Utilities owned must be between 0 and " + rent.length);
     }
     
 }
