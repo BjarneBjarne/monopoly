@@ -15,6 +15,7 @@ public class GameState {
     private Board board;
     private List<ChanceCard> chanceCards;
     private List<CommunityChestCard> communityChestCards;
+    private RollResult lastRoll;
 
     public GameState(Board board, List<ChanceCard> chanceCards, List<CommunityChestCard> communityChestCards, int currentPlayerIndex, List<Player> players) {
         this.board = board;
@@ -22,6 +23,7 @@ public class GameState {
         this.communityChestCards = communityChestCards;
         this.currentPlayerIndex = currentPlayerIndex;
         this.players = players;
+        this.lastRoll = null;
     }
     
     public void sendToJail(Player player) {
@@ -53,5 +55,13 @@ public class GameState {
 
     public Board getBoard() {
         return board;
+    }
+
+    public RollResult getLastRoll() {
+        return lastRoll;
+    }
+
+    public void setLastRoll(RollResult lastRoll) {
+        this.lastRoll = lastRoll;
     }
 }
