@@ -11,9 +11,22 @@ public class DiceRoller {
 
     public RollResult roll() {
         int total = 0;
-        int[] values;
-        boolean allEqual = false;
+        int[] values = new int[this.numDice];
+        boolean allEqual = true;
+        Die die = new Die(this.numSides);
 
-        for (int i = 0; i < this.numDice)
+        if (this.numDice == 1) {
+            allEqual = false;
+        }
+
+        for (int i = 0; i < this.numDice; i++) {
+            values[i] = die.roll();
+            total += values[i];
+            if (i > 0 && values[i] != values[i-1] && allEqual) {
+                allEqual = false;
+            }
+        }
+        
+        return new RollResult(total, values, allEqual);
     }
 }
