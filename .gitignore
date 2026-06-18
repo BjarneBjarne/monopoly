@@ -1,5 +1,6 @@
 # Compiled output
 target/
+*.class
 
 # IDE files
 .idea/
