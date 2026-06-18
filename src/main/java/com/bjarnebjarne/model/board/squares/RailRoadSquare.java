@@ -12,7 +12,7 @@ public class RailroadSquare extends PurchaseableSquare {
     public int calculateRent(GameState state) {
         int railroadsOwned = 0;
         for (Square square : state.getBoard().getSquares()) {
-            if (square instanceof RailroadSquare rr && rr.getOwner() == this.getOwner()) {
+            if (square instanceof RailroadSquare railroad && railroad.getOwner() == this.getOwner()) {
                 railroadsOwned++;
             }
         }
