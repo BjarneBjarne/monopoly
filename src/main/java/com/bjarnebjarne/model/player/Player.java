@@ -30,10 +30,12 @@ public class Player {
 
     public void addProperty(PurchaseableSquare property) {
         ownedProperties.add(property);
+        property.setOwner(this);
     }
 
     public void removeProperty(PurchaseableSquare property) {
         boolean removed = ownedProperties.remove(property);
+        property.setOwner(null);
         if(!removed) throw new IllegalStateException("Could not remove property from player");
     }
 
