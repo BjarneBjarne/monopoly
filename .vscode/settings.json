@@ -1,3 +1,12 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.jdt.ls.java.home": "C:/Users/bgrei/.jdk/jdk-25",
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-25",
+            "path": "C:/Users/bgrei/.jdk/jdk-25",
+            "default": true
+        }
+    ],
+    "maven.terminal.useJavaHome": true
 }

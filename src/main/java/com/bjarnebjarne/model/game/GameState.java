@@ -56,6 +56,9 @@ public class GameState {
         if (referenceSquare instanceof PurchaseableSquare ps) {
             referenceOwner = ps.getOwner();
         }
+        if (referenceOwner == null) {
+            return 0;
+        }
 
         for (Square square : this.board.getSquares()) {
             if (square.getType().equals(referenceSquare.getType()) &&
